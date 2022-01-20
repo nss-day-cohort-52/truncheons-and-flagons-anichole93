@@ -20,7 +20,7 @@ class HandleRequests(BaseHTTPRequestHandler):
         id = None
         filters = None
         url_parts = path.split("/")
-        url_parts.pop(0)
+        # url_parts.pop(0)
 
         resource = url_parts[1]
         if "?" in resource:
@@ -72,9 +72,8 @@ class HandleRequests(BaseHTTPRequestHandler):
 
 def main():
     host = ''
-    port = 8089
+    port = int(os.environ['PORT'])
     HTTPServer((host, port), HandleRequests).serve_forever()
 
 
-if __name__ == "__main__":
-    main()
+main()
